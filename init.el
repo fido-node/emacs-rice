@@ -6,6 +6,8 @@
 ;; Load no-littering.el before anything else to keep ~/.emacs.d/ tidy.
 (use-package no-littering :straight t)
 
+
+(setq create-lockfiles nil)
 (no-littering-theme-backups)
 (when (and (fboundp 'startup-redirect-eln-cache)
            (fboundp 'native-comp-available-p)
