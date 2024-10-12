@@ -4,5 +4,6 @@ auto-save-list
 .cache
 var
 straight
+eln-cache
 *~
 \#*#
