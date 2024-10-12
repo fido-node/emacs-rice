@@ -1,6 +1,5 @@
 
 (use-package meow
-  :straight t
   :demand t
   :config
   (require 'meow)

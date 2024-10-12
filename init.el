@@ -1,18 +1,35 @@
+(setq
+  visible-bell t
+  inhibit-startup-message t
+  auto-save-default nil
+  make-backup-files nil
+  set-mark-command-repeat-pop t
+  large-file-warning-threshold nil
+  vc-follow-symlinks t
+  ad-redefinition-action 'accept
+  global-auto-revert-non-file-buffers t
+native-comp-async-report-warnings-errors nil
+  )
+
+
+
 ;; Load early-init.el regardless of the way Emacs was started.
-(require 'nano-defaults (expand-file-name "nano-defaults" user-emacs-directory))
-(require 'nano-splash (expand-file-name "nano-splash" user-emacs-directory))
+;; (require 'nano-defaults (expand-file-name "nano-defaults" user-emacs-directory))
+;; (require 'nano-splash (expand-file-name "nano-splash" user-emacs-directory))
 (require 'early-init (expand-file-name "early-init" user-emacs-directory))
 
 ;; Load no-littering.el before anything else to keep ~/.emacs.d/ tidy.
-(use-package no-littering :straight t)
+(use-package no-littering)
 
+
+(setq create-lockfiles nil)
 (no-littering-theme-backups)
 (when (and (fboundp 'startup-redirect-eln-cache)
            (fboundp 'native-comp-available-p)
            (native-comp-available-p))
   (startup-redirect-eln-cache
    (convert-standard-filename
-    (expand-file-name  "var/eln-cache/" user-emacs-directory))))
+     (expand-file-name  "var/eln-cache/" user-emacs-directory))))
 
 
 ;; Expose the packages integrated into the config repository.

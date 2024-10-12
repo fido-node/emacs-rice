@@ -1,9 +1,7 @@
 ;; (use-package rg
-;;   :straight t
 ;;   :config (rg-enable-default-bindings))
 
 ;; (use-package fzf
-;;   :straight t
 ;;   :ensure t
 ;;   ;;:config
 ;;   ;; (setq fzf/args "-x --color bw --print-query --margin=1,0 --no-hscroll"
@@ -20,11 +18,9 @@
 
 
 (use-package projectile
-  :straight t
   :config
   (projectile-mode +1))
 
 (use-package which-key
-  :straight t
   :ensure t
   :config (which-key-mode))

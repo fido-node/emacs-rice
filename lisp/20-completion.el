@@ -1,10 +1,9 @@
 (use-package corfu
-  :straight t
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
+  (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   (corfu-preview-current nil)    ;; Disable current candidate preview
   ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
@@ -96,12 +95,10 @@
 
 
 (use-package consult-lsp
-  :straight t
   :ensure t)
 
 ;; Enable vertico
 (use-package vertico
-  :straight t
   :custom
   ;; (vertico-scroll-margin 0) ;; Different scroll margin
   (vertico-count 10) ;; Show more candidates
@@ -131,7 +128,6 @@
   )
 
 (use-package vertico-posframe
-  :straight t
   :after vertico-multiform
   :ensure nil
   :config
@@ -149,13 +145,11 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
-  :straight t
   :init
   (savehist-mode))
 
 ;; A few more useful configurations...
 (use-package emacs
-  :straight t
   :custom
   ;; Support opening new minibuffers from inside existing minibuffers.
   (enable-recursive-minibuffers t)
@@ -169,7 +163,7 @@
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
-  (tab-always-indent 'complete)
+  ;; (tab-always-indent 'complete)
 
   ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
   ;; try `cape-dict'.
@@ -197,12 +191,10 @@
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
   )
 
-(use-package hotfuzz
-  :straight t)
+(use-package hotfuzz)
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  :straight t
   :custom
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
@@ -212,12 +204,16 @@
   (completion-category-overrides nil))
 
 (use-package marginalia
-  :straight t
   :config
   (marginalia-mode 1))
 
+
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package embark
-  :ensure t
   :init
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
@@ -239,7 +235,3 @@
                  (window-parameters (mode-line-format . none)))))
 
 ;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))

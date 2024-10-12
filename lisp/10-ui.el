@@ -1,7 +1,6 @@
 (set-face-attribute 'default nil :font "BlexMono Nerd Font Mono" :height 150 :weight 'semi-light)
 
 (use-package doom-modeline
-  :straight t
   :config
   (setq doom-modeline-hud nil)
   (setq doom-modeline-icon nil)
@@ -11,12 +10,10 @@
   (doom-modeline-mode 1)
   )
 
-(use-package all-the-icons
-  :straight t)
+(use-package all-the-icons)
 
 (use-package  doom-themes
   :ensure t
-  :straight t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -35,18 +32,15 @@
   (doom-themes-org-config)
   )
 
-(use-package aggressive-indent
-  :straight t)
+(use-package aggressive-indent)
 
 
 (use-package rainbow-delimiters
-  :straight t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 
 (use-package dashboard
-  :straight t
   :ensure t
   :init
   (setq dashboard-startup-banner 3)
@@ -80,7 +74,6 @@
 
 
 (use-package treemacs
-  :straight t
   :ensure t
   :defer t
   :init
@@ -165,21 +158,7 @@
 
 
 (use-package treemacs-magit
-  :after (treemacs magit)
-  :ensure t
-  :straight t)
+  :after (treemacs magit))
 
 (with-eval-after-load 'treemacs
   (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action))
-
-(setq  truncate-lines t)
-
-
-(use-package centaur-tabs
-  :demand
-  :config
-  (setq centaur-tabs-set-bar 'under)
-  (setq x-underline-at-descent-line t)
-  (setq centaur-tabs-plain-icons t)
-  :custom
-    (centaur-tabs-mode t))

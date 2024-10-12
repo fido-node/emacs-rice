@@ -3,7 +3,6 @@
 
 (use-package projectile
   :demand t
-  :straight t
   :init
   ;; ensure projectile saves its files in a nice location
   (setq projectile-cache-file
@@ -32,4 +31,3 @@
   ;; (leader-keys
   ;;  "p" 'projectile-command-map)
 )
-

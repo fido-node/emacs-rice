@@ -1,5 +1,4 @@
 (use-package lsp-mode
-  :straight t
   ;; Optional - enable lsp-mode automatically in scala files
   ;; You could also swap out lsp for lsp-deffered in order to defer loading
   :hook
@@ -31,6 +30,7 @@
   ;; https://emacs-lsp.github.io/lsp-mode/page/settings/mode/#lsp-keep-workspace-alive
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-auto-execute-action nil)
+  (setq lsp-nix-nil-formatter ["nixfmt"])
 
 (with-eval-after-load 'lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.bloop\\'")
@@ -59,16 +59,9 @@
   (setq lsp-ui-doc-position 'bottom)
   (setq lsp-ui-doc-delay 3)
   (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-show-with-mouse t)
-
-  :straight t)
-
+  (setq lsp-ui-doc-show-with-mouse t))
 
 (use-package lsp-treemacs
-  :straight t
   :init
   (lsp-treemacs-sync-mode 1)
   )
-
-(use-package dap-mode
-  :straight t)

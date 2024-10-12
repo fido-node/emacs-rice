@@ -1,10 +1,8 @@
 (use-package scala-mode
-  :straight t
   :interpreter ("scala" . scala-mode))
 
 ;; Enable sbt mode for executing sbt commands
 (use-package sbt-mode
-  :straight t
   :commands sbt-start sbt-command
   :config
   ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
@@ -18,7 +16,4 @@
 
 
 ;; Add metals backend for lsp-mode
-(use-package lsp-metals
-  :straight t)
-
-
+(use-package lsp-metals)

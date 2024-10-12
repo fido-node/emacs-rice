@@ -1,7 +1,6 @@
 
 
-(use-package bind-key
-  :straight t)
+(use-package bind-key)
 
 (require 'meow)
 (require 'bind-key)
