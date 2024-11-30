@@ -1,0 +1,14 @@
+etc
+elpa
+auto-save-list
+.cache
+var
+straight
+eln-cache
+*~
+\#*#
+history
+recentf
+projects
+.lsp-session-*
+transient
