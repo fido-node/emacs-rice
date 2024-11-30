@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono" :height 130 :weight 'semi-light)
+(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono" :height 140 :weight 'regular)
 
 (use-package hydra)
 
