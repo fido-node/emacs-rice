@@ -70,7 +70,9 @@
 (menu-bar-mode 0)              ;; Hide the menu bar
 (tool-bar-mode 0)              ;; Hide the tool bar
 (savehist-mode 1)              ;; Save minibuffer history
-(scroll-bar-mode 0)            ;; Hide the scroll bar
+(when (display-graphic-p)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0))
 (xterm-mouse-mode 1)           ;; Enable mouse events in terminal Emacs
 (display-time-mode 1)          ;; Display time in mode line / tab bar
 (fido-vertical-mode 1)         ;; Improved vertical minibuffer completions
