@@ -38,6 +38,7 @@
 
 (defun bootstrap-use-package ()
   "Install use-package.el"
+  (straight-use-package 'org)
   (setq use-package-enable-imenu-support t)
   (straight-use-package 'use-package)
   (straight-use-package 'diminish)

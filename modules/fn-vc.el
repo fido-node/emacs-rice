@@ -6,8 +6,11 @@
   :init
   (editorconfig-mode 1))
 
-;; (use-package envrc
-;;   :hook (after-init . envrc-global-mode))
+;; (use-package envrc)
+
+(use-package direnv
+  :config
+  (direnv-mode))
 
 (defvar user-cache-directory (concat user-emacs-directory "var/"))
 

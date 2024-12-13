@@ -106,8 +106,12 @@
   (add-hook 'denote-after-new-note-hook #'fn/refresh-agenda-files))
 
 
-(use-package esxml  :ensure t)
+(use-package esxml
+  :after org
+  )
 
-(use-package ox-rss  :ensure t)
+(use-package ox-rss
+  :after org
+  )
 
 (provide 'fn-workflow)

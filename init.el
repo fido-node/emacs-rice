@@ -151,12 +151,15 @@
 
 (defvar fn/common-config-modules '(
                                    fn-core
+                                   fn-auth
                                    fn-present
                                    fn-writing
                                    fn-workflow
                                    fn-coding
                                    fn-interface
                                    fn-vc
+                                   fn-bindings
+                                   fn-social
                                    )
   "Configuration modules most commonly used across my machines.")
 
@@ -203,13 +206,13 @@
   (modus-themes-bold-constructs t)
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t)
-  (modus-themes-to-toggle '(modus-vivendi-tinted modus-operandi-tinted))
+  (modus-themes-to-toggle '(modus-operandi-tinted))
   (modus-themes-common-palette-overrides
    `((bg-mode-line-active bg-lavender)
      (fg-mode-line-active fg-main)
      (border-mode-line-active bg-magenta-warmer)))
   :init
-  (load-theme 'modus-vivendi-tinted t)
+  (load-theme 'modus-operandi t)
   (add-hook 'modus-themes-after-load-theme-hook #'fn/clear-background-color))
 ;;
 ;; Make vertical window separators look nicer in terminal Emacs
