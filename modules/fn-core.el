@@ -7,7 +7,7 @@
 
 (use-package no-littering
   :demand t
-  :config
+  :init
   ;; Set the custom-file to a file that won't be tracked by Git
   (setq custom-file (if (boundp 'server-socket-dir)
                         (expand-file-name "custom.el" server-socket-dir)

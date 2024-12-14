@@ -1,3 +1,4 @@
+
 ;; -*- lexical-binding: t; -*-
 
 
@@ -182,7 +183,7 @@
   (require 'dockerfile-mode))
 
 (use-package  tree-sitter
-  :config
+  :init
   (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs)

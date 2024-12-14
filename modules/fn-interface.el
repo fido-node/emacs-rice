@@ -1,3 +1,4 @@
+
 ;; -*- lexical-binding: t; -*-
 
 (set-face-attribute 'default nil :font "BlexMono Nerd Font Mono" :height 140 :weight 'regular)
@@ -15,10 +16,7 @@
   :custom
   (vertico-cycle t)
 
-  :custom-face
-  (vertico-current ((t (:background "#3a3f5a"))))
-
-  :config
+  :init
   (require 'vertico-directory)
   (vertico-mode))
 
@@ -36,7 +34,7 @@
   (corfu-quit-at-boundary t)
   (corfu-quit-no-match t)
 
-  :config
+  :init
   (global-corfu-mode 1)
 
   (defun corfu-enable-in-minibuffer ()
@@ -106,7 +104,7 @@
   (marginalia-annotators '(marginalia-annotators-heavy
                            marginalia-annotators-light
                            nil))
-  :config
+  :init
   (marginalia-mode))
 
 (use-package embark
@@ -163,13 +161,13 @@
   ;; (add-to-list 'dashboard-items '(agenda) t)
   ;; (setq dashboard-week-agenda t)
 
-  :config
+  :init
   (dashboard-setup-startup-hook)
   )
 
 
 (use-package which-key
-  :config
+  :init
   (which-key-mode 1))
 
 

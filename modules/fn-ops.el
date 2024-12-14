@@ -2,7 +2,7 @@
 
 (use-package kubed
   :ensure t
-  :config
+  :init
   (keymap-global-set "C-c k" 'kubed-prefix-map))
 
 (provide 'fn-ops)

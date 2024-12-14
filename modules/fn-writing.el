@@ -17,7 +17,7 @@
      "kra" "krb" "krv"
      "rn"))
 
-  :config
+  :init
 
   (require 'denote-rename-buffer)
   (require 'denote-org-extras)

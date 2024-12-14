@@ -4,7 +4,7 @@
 (unless (display-graphic-p)
   (use-package xclip
     :demand t
-    :config
+    :init
     (xclip-mode 1)))
 
 (use-package bluetooth)
