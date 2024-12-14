@@ -175,7 +175,11 @@
        (format "~/.config/emacs/systems/%s.el" system-name)))
   (if (file-exists-p config-path)
       (load-file config-path)
-    (message "No per-system configuration found for %s!" system-name)))
+    (progn
+      (message "No per-system configuration found for %s!" system-name)
+      (setq fn/use-config-modules
+            '(fn-workflow)
+            ))))
 
 
 
