@@ -4,6 +4,8 @@
 
 ;;; ----- Basic Configuration -----
 
+(use-package org)
+
 ;; Core settings
 (setq ;; Flash the UI instead of beeping
  visible-bell nil
