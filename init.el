@@ -163,8 +163,7 @@
                                    fn-interface
                                    fn-vc
                                    fn-bindings
-                                   fn-social
-                                   )
+                                   fn-social)
   "Configuration modules most commonly used across my machines.")
 
 

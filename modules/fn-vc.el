@@ -45,8 +45,15 @@
   ;;  "p" 'projectile-command-map)
   )
 
-(use-package treemacs-projectile)
+(use-package consult-projectile
+  :after projectile)
+
+(use-package treemacs-projectile
+  :after projectile)
 
 (use-package magit)
+
+(use-package diff-hl
+  :init (global-diff-hl-mode))
 
 (provide 'fn-vc)

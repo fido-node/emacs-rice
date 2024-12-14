@@ -2,11 +2,15 @@
 
 
 (use-package general
-  :config
+  :init
   (general-define-key
-   "C-f" 'amx                             ; or 'smex
-   "C-s" 'counsel-grep-or-swiper)
-
+   "C-f" 'consult-line
+   "C-M-f" 'consult-ripgrep
+   "C-/" 'comment-line
+   "C-x b" 'consult-buffer
+   "C-x C-b" 'consult-projectile
+   "C-M-<left>" 'pop-global-mark
+   )
   )
 
 (provide 'fn-bindings)
