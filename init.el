@@ -376,5 +376,8 @@
 (dolist (module fn/use-config-modules)
   (require module))
 
-(dashboard-open)
-(treemacs-start-on-boot)
+(when (display-graphic-p)
+
+  (dashboard-open)
+  (treemacs-start-on-boot)
+  )
