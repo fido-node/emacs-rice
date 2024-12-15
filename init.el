@@ -190,37 +190,48 @@
 (defun fn/set-terminal-title (title)
   (send-string-to-terminal (format "\e]0;%s\a" title)))
 
-(defun fn/clear-background-color (&optional frame))
-;; (interactive)
-;; (or frame (setq frame (selected-frame)))
-;; "unsets the background color in terminal mode"
-;; (unless (display-graphic-p frame)
-;; Set the terminal to a transparent version of the background color
-;; (send-string-to-terminal
-;; (format "\033]11;[90]%s\033\\"
-;; (face-attribute 'default :background)))
-;; (set-face-background 'default "unspecified-bg" frame)))
+;; (defun fn/clear-background-color (&optional frame)
+;;   (interactive)
+;;   (or frame (setq frame (selected-frame)))
+;;   "unsets the background color in terminal mode"
+;;   (unless (display-graphic-p frame)
+;;     Set the terminal to a transparent version of the background color
+;;     (send-string-to-terminal
+;;      (format "\033]11;[90]%s\033\\"
+;;              (face-attribute 'default :background)))
+;;     (set-face-background 'default "unspecified-bg" frame)))
 
-;; Clear the background color for transparent terminals
-(unless (display-graphic-p)
-  (add-hook 'after-make-frame-functions 'fn/clear-background-color)
-  (add-hook 'window-setup-hook 'fn/clear-background-color)
-  (add-hook 'ef-themes-post-load-hook 'fn/clear-background-color))
+;; ;; Clear the background color for transparent terminals
+;; (unless (display-graphic-p)
+;;   (add-hook 'after-make-frame-functions 'fn/clear-background-color)
+;;   (add-hook 'window-setup-hook 'fn/clear-background-color)
+;;   (add-hook 'ef-themes-post-load-hook 'fn/clear-background-color))
+
+(use-package moe-theme
+  ;; :init
+  ;; (load-theme 'moe-light t)
+  )
 
 (use-package modus-themes
+
   :custom
   (modus-themes-italic-constructs t)
   (modus-themes-bold-constructs t)
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t)
-  (modus-themes-to-toggle '(modus-operandi-tinted))
+  (modus-themes-to-toggle '(modus-vivendi-tinted))
   (modus-themes-common-palette-overrides
    `((bg-mode-line-active bg-lavender)
      (fg-mode-line-active fg-main)
      (border-mode-line-active bg-magenta-warmer)))
   :init
-  (load-theme 'modus-operandi t)
-  (add-hook 'modus-themes-after-load-theme-hook #'fn/clear-background-color))
+  (if  (display-graphic-p)
+      (load-theme 'modus-operandi-tritanopia t)
+    (progn
+      (require 'moe-theme)
+      (moe-light)
+      )))
+
 ;;
 ;; Make vertical window separators look nicer in terminal Emacs
 (set-display-table-slot standard-display-table 'vertical-border (make-glyph-code ?│))
