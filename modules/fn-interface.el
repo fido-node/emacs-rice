@@ -1,7 +1,7 @@
 
 ;; -*- lexical-binding: t; -*-
 
-(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono" :height 140 :weight 'regular)
+(set-face-attribute 'default nil :font "Iosevka Comfy Motion" :height 150 :weight 'regular)
 
 (use-package hydra)
 
@@ -277,5 +277,6 @@
   )
 
 
+(visual-line-mode nil)
 
 (provide 'fn-interface)

@@ -43,4 +43,26 @@
                   (markdown-header-face-5 . 1.0)))
     (set-face-attribute (car face) nil :weight 'normal :height (cdr face))))
 
+
+(use-package plantuml-mode
+  :ensure t
+  :defer
+  :init
+  (add-hook 'plantuml-mode-hook
+            (lambda () (add-hook
+                        'completion-at-point-functions
+                        'my/plantuml-complete nil t)))
+  :config
+  ;; Add rudimentary CAPF support to plantuml-mode
+  (defun my/plantuml-complete ()
+    (unless (seq-contains-p
+             [? ?	13 10] (char-before))
+      (list (save-excursion
+              (re-search-backward
+               (rx word-boundary (1+ wordchar)) nil t)
+              (point))
+            (point)
+            plantuml-kwdList))))
+
+
 (provide 'fn-writing)
