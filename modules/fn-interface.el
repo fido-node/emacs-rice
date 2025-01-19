@@ -20,6 +20,8 @@
   (require 'vertico-directory)
   (vertico-mode))
 
+(use-package cape)
+
 (use-package corfu
   :bind (:map corfu-map
               ("C-j" . corfu-next)

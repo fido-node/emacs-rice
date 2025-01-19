@@ -93,15 +93,16 @@
     (add-hook 'orderless-style-dispatchers #'my/orderless-dispatch-flex-first nil 'local)
     ;; Optionally configure the cape-capf-buster.
 
-    ;; (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
+    (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
     )
 
-  :config
+  :init
   ;; Uncomment following section if you would like to tune lsp-mode performance according to
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq lsp-idle-delay 0.500)
   (setq lsp-log-io nil)
-  (setq lsp-completion-provider nil)
+  (setq lsp-completion-provider :none)
+  ;; (setq lsp-completion-enable nil)
   (setq lsp-modeline-code-actions-segments '(count name))
   (setq lsp-headerline-breadcrumb-segments '(path symbols))
   (setq lsp-prefer-flymake t)
@@ -110,20 +111,15 @@
   (setq lsp-keep-workspace-alive nil)
   (setq lsp-auto-execute-action nil)
   (setq lsp-nix-nil-formatter ["nixfmt"])
+  (setq lsp-file-watch-threshold 5000)
 
   (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.bloop\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.metals\\'")
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.ammonite\\'")
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.ivy2\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.sbt\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]target\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]project/target\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]project/\\..+\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]dist\\'")))
+    ))
 
 (use-package lsp-ui
-  :config
+  :init
   (setq lsp-ui-sideline-show-diagnostics t)
   (setq lsp-ui-sideline-show-code-actions t)
   (setq lsp-ui-sideline-update-mode 'line)
@@ -165,9 +161,6 @@
   :hook (nix-mode . lsp-deferred)
   :mode "\\.nix\\'")
 
-;; Add metals backend for lsp-mode
-(use-package lsp-metals)
-
 (use-package company-nixos-options
   :after (company-mode)
   :custom
@@ -176,7 +169,8 @@
 ;; Add metals backend for lsp-mode
 (use-package
   lsp-metals
-  :straight (:type built-in))
+  ;; :straight (:type built-in)
+  )
 
 (use-package dockerfile-mode
   :init
