@@ -129,8 +129,7 @@
 
 (use-package embark-consult
   :after embark
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package aggressive-indent)
 
