@@ -1,7 +1,7 @@
 
 ;; -*- lexical-binding: t; -*-
 
-(set-face-attribute 'default nil :font "Iosevka Comfy Motion" :height 150 :weight 'regular)
+(set-face-attribute 'default nil :font "Iosevka Comfy Motion" :height 130 :weight 'regular)
 
 (use-package hydra)
 
@@ -126,7 +126,9 @@
   (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package embark-consult
-  :after embark)
+  :after embark
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package aggressive-indent)
 
