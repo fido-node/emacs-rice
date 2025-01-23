@@ -6,6 +6,8 @@
 
 (use-package org)
 
+(setq load-prefer-newer t)
+
 ;; Core settings
 (setq ;; Flash the UI instead of beeping
  visible-bell nil
