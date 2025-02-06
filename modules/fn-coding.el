@@ -93,7 +93,7 @@
     (add-hook 'orderless-style-dispatchers #'my/orderless-dispatch-flex-first nil 'local)
     ;; Optionally configure the cape-capf-buster.
 
-    (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
+    ;; (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
     )
 
   :init

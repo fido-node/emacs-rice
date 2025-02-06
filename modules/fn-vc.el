@@ -56,4 +56,6 @@
 (use-package diff-hl
   :init (global-diff-hl-mode))
 
+(use-package helm-ls-git)
+
 (provide 'fn-vc)

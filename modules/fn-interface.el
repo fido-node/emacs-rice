@@ -11,7 +11,9 @@
   :config
   (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
         helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-        helm-ff-search-library-in-sexp t)
+        helm-ff-search-library-in-sexp t
+        helm-M-x-show-short-doc t
+        helm-apropos-show-short-doc t)
   (helm-autoresize-mode 1)
   (helm-mode 1))
 
@@ -181,5 +183,11 @@
 
 
 (visual-line-mode nil)
+
+(use-package vundo)
+
+(use-package savehist
+  :init
+  (savehist-mode))
 
 (provide 'fn-interface)
