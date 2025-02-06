@@ -384,7 +384,7 @@
     (remove-hook 'window-configuration-change-hook #'center-document--adjust-margins 'local))
   (center-document--adjust-margins))
 
-(add-hook 'org-mode-hook #'center-document-mode)
+;; (add-hook 'org-mode-hook #'center-document-mode)
 
 ;; Make sure ripgrep is used everywhere
 (setq xref-search-program 'ripgrep

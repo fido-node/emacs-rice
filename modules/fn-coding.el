@@ -1,4 +1,3 @@
-
 ;; -*- lexical-binding: t; -*-
 
 
@@ -68,6 +67,7 @@
   ;; You could also swap out lsp for lsp-deffered in order to defer loading
   :hook
   (scala-mode . lsp)
+  (yaml-mode . lsp)
   (lsp-mode . lsp-lens-mode)
   (lsp-completion-mode . my/lsp-mode-setup-completion)
   :init
@@ -101,7 +101,7 @@
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq lsp-idle-delay 0.500)
   (setq lsp-log-io nil)
-  (setq lsp-completion-provider :none)
+  (setq lsp-completion-provider :capf)
   ;; (setq lsp-completion-enable nil)
   (setq lsp-modeline-code-actions-segments '(count name))
   (setq lsp-headerline-breadcrumb-segments '(path symbols))
@@ -134,6 +134,8 @@
 (use-package lsp-treemacs
   :init
   (lsp-treemacs-sync-mode 1))
+
+(use-package helm-lsp)
 
 (use-package scala-mode
   :interpreter ("scala" . scala-mode))
@@ -187,5 +189,33 @@
   :config
   (yas-reload-all))
 
+
+;; suggest things when company has nothing to say
+(setq-default tab-always-indent 'complete)
+
+;; turn off annoying tooltips
+(use-package company
+  :config
+  ;; (setq company-frontends nil)
+  (push 'company-capf company-backend)
+  :hook (after-init . global-company-mode))
+
+
+;; (use-package company-capf
+;; :config
+;; (push 'company-capf company-backends))
+
+;; enjoy
+;; (use-package helm-company
+;;   :bind (
+;;          ("TAB" . #'helm-company)
+;;          ("<tab>".  #'helm-company))
+;;   )
+
+
+(use-package company-lsp
+  :config
+  (push 'company-lsp company-backends)
+  )
 
 (provide 'fn-coding)

@@ -39,19 +39,19 @@
           ".pdf"
           ))
   (setq projectile-indexing-method 'hybrid)
-
-  ;; :general
-  ;; (leader-keys
-  ;;  "p" 'projectile-command-map)
   )
 
-(use-package consult-projectile
-  :after projectile)
+(use-package helm-projectile
+  :after projectile
+  :config
+  (helm-projectile-on))
 
 (use-package treemacs-projectile
   :after projectile)
 
 (use-package magit)
+
+(use-package git-timemachine)
 
 (use-package diff-hl
   :init (global-diff-hl-mode))
