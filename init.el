@@ -165,7 +165,8 @@
                                    fn-interface
                                    fn-vc
                                    fn-bindings
-                                   fn-social)
+                                   fn-social
+                                   fn-copilot)
   "Configuration modules most commonly used across my machines.")
 
 

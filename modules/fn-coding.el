@@ -200,6 +200,12 @@
   (push 'company-capf company-backend)
   :hook (after-init . global-company-mode))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
+(use-package company-quickhelp
+  :hook (prog-mode . company-quickhelp-mode)
+  )
 
 ;; (use-package company-capf
 ;; :config

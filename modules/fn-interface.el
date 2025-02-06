@@ -186,8 +186,39 @@
 
 (use-package vundo)
 
+(use-package buffer-name-relative
+  :init
+  (buffer-name-relative-mode))
+
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
+
+
+(use-package sideline
+  :hook ((flycheck-mode . sideline-mode))
+  :init
+  (setq sideline-backends-left-skip-current-line t   ; don't display on current line (left)
+        sideline-backends-right-skip-current-line t  ; don't display on current line (right)
+        sideline-order-left 'down                    ; or 'up
+        sideline-order-right 'up                     ; or 'down
+        sideline-format-left "%s   "                 ; format for left aligment
+        sideline-format-right "   %s"                ; format for right aligment
+        sideline-priority 100                        ; overlays' priority
+        sideline-display-backend-name t))
+
+(use-package sideline-flycheck
+  :hook (flycheck-mode . sideline-flycheck-setup))
+
+(use-package awesome-tab
+  :config
+  (setq awesome-tab-display-icon nil)
+  (awesome-tab-mode t))
+
 (use-package savehist
   :init
   (savehist-mode))
+
 
 (provide 'fn-interface)
