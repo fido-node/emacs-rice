@@ -166,7 +166,8 @@
                                    fn-vc
                                    fn-bindings
                                    fn-social
-                                   fn-copilot)
+                                   fn-copilot
+                                   fn-remote)
   "Configuration modules most commonly used across my machines.")
 
 
