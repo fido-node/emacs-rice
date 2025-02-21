@@ -154,6 +154,7 @@
 (defvar fn/common-config-modules '(
                                    fn-org
                                    fn-core
+                                   fn-completion
                                    fn-auth
                                    fn-present
                                    fn-writing

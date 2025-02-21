@@ -82,26 +82,29 @@
 
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
 
-
-  (defun my/orderless-dispatch-flex-first (_pattern index _total)
-    (and (eq index 0) 'orderless-flex))
-
   (defun my/lsp-mode-setup-completion ()
     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless))
-    ;; Optionally configure the first word as flex filtered.
-    (add-hook 'orderless-style-dispatchers #'my/orderless-dispatch-flex-first nil 'local)
-    ;; Optionally configure the cape-capf-buster.
+          '(orderless))) ;; Configure orderless
 
-    ;; (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
-    )
+  ;; (defun my/orderless-dispatch-flex-first (_pattern index _total)
+  ;;   (and (eq index 0) 'orderless-flex))
+
+  ;; (defun my/lsp-mode-setup-completion ()
+  ;;   (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+  ;;         '(orderless))
+  ;;   ;; Optionally configure the first word as flex filtered.
+  ;;   (add-hook 'orderless-style-dispatchers #'my/orderless-dispatch-flex-first nil 'local)
+  ;;   ;; Optionally configure the cape-capf-buster.
+
+  ;;   (setq-local completion-at-point-functions (list (cape-capf-buster #'lsp-completion-at-point)))
+  ;;   )
 
   :init
   ;; Uncomment following section if you would like to tune lsp-mode performance according to
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
   (setq lsp-idle-delay 0.500)
   (setq lsp-log-io nil)
-  (setq lsp-completion-provider :capf)
+  (setq lsp-completion-provider :none)
   ;; (setq lsp-completion-enable nil)
   (setq lsp-modeline-code-actions-segments '(count name))
   (setq lsp-headerline-breadcrumb-segments '(path symbols))
@@ -163,11 +166,6 @@
   :hook (nix-mode . lsp-deferred)
   :mode "\\.nix\\'")
 
-(use-package company-nixos-options
-  :after (company-mode)
-  :custom
-  (add-to-list 'company-backends 'company-nixos-options))
-
 ;; Add metals backend for lsp-mode
 (use-package
   lsp-metals
@@ -189,39 +187,5 @@
   :config
   (yas-reload-all))
 
-
-;; suggest things when company has nothing to say
-(setq-default tab-always-indent 'complete)
-
-;; turn off annoying tooltips
-(use-package company
-  :config
-  ;; (setq company-frontends nil)
-  (push 'company-capf company-backend)
-  :hook (after-init . global-company-mode))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode))
-
-(use-package company-quickhelp
-  :hook (prog-mode . company-quickhelp-mode)
-  )
-
-;; (use-package company-capf
-;; :config
-;; (push 'company-capf company-backends))
-
-;; enjoy
-;; (use-package helm-company
-;;   :bind (
-;;          ("TAB" . #'helm-company)
-;;          ("<tab>".  #'helm-company))
-;;   )
-
-
-(use-package company-lsp
-  :config
-  (push 'company-lsp company-backends)
-  )
 
 (provide 'fn-coding)
