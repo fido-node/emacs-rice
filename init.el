@@ -1,10 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-;;; This file is generated from the Emacs.org file in my dotfiles repository!
-
 ;;; ----- Basic Configuration -----
-
-(use-package org)
 
 (setq load-prefer-newer t)
 
@@ -83,7 +79,7 @@
 (column-number-mode 1)         ;; Show column number on mode line
 (tab-bar-history-mode 1)       ;; Remember previous tab window configurations
 (auto-save-visited-mode 1)     ;; Auto-save files at an interval
-(global-visual-line-mode 1)    ;; Visually wrap long lines in all buffers
+;; (global-visual-line-mode 1)    ;; Visually wrap long lines in all buffers
 (global-auto-revert-mode 1)    ;; Refresh buffers with changed local files
 
 (icomplete-mode 0)
@@ -156,6 +152,7 @@
   "A list of module symbols to load once init.el is finished.")
 
 (defvar fn/common-config-modules '(
+                                   fn-org
                                    fn-core
                                    fn-auth
                                    fn-present
@@ -322,40 +319,6 @@
 (with-eval-after-load 'term
   (keymap-set term-raw-map "C-c p" #'fn/toggle-popup-window))
 
-;;; ----- Essential Org Mode Configuration -----
-
-(setq org-ellipsis " ▾"
-      org-startup-folded 'content
-      org-cycle-separator-lines 2
-      org-fontify-quote-and-verse-blocks t)
-
-;; Indent org-mode buffers for readability
-(add-hook 'org-mode-hook #'org-indent-mode)
-
-;; Set up Org Babel languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (shell . t)))
-
-;; Use org-tempo
-(use-package org-tempo
-  :straight (:type built-in)
-  :ensure nil
-  :demand t
-  :config
-  (dolist (item '(("sh" . "src sh")
-                  ("el" . "src emacs-lisp")
-                  ("li" . "src lisp")
-                  ("sc" . "src scheme")
-                  ("ts" . "src typescript")
-                  ("py" . "src python")
-                  ("yaml" . "src yaml")
-                  ("json" . "src json")
-                  ("einit" . "src emacs-lisp :tangle emacs/init.el")
-                  ("emodule" . "src emacs-lisp :tangle emacs/modules/dw-MODULE.el")))
-    (add-to-list 'org-structure-template-alist item)))
-
 ;;; ----- Document Centering -----
 
 (defvar center-document-desired-width 90
@@ -399,5 +362,5 @@
 (when (display-graphic-p)
 
   (dashboard-open)
-  ;; (treemacs-start-on-boot)
+  (treemacs-start-on-boot)
   )

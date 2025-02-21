@@ -5,6 +5,8 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d!)")))
 
+(setq  calendar-week-start-day  1)
+
 (setq org-todo-keyword-faces
       '(("GOAL" . (:foreground "orange red" :weight bold))
         ("WAIT" . (:foreground "HotPink2" :weight bold))

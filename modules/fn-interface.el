@@ -14,8 +14,16 @@
         helm-ff-search-library-in-sexp t
         helm-M-x-show-short-doc t
         helm-apropos-show-short-doc t)
+  (add-to-list 'helm-commands-using-frame #'helm-M-x)
   (helm-autoresize-mode 1)
   (helm-mode 1))
+
+(use-package buffer-terminator
+  :ensure t
+  :custom
+  (buffer-terminator-verbose nil)
+  :config
+  (buffer-terminator-mode 1))
 
 (use-package helm-swoop
   :bind
@@ -181,8 +189,6 @@
   ;; (add-hook 'modus-themes-after-load-theme-hook 'spacious-padding-mode)
   )
 
-
-(visual-line-mode nil)
 
 (use-package vundo)
 

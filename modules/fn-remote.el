@@ -13,4 +13,11 @@
 
 
 
+(use-package tramp
+  :custom
+  (tramp-default-method "ssh")
+  (tramp-completion-reread-directory-timeout nil)
+  (tramp-default-remote-shell "bash")
+  (tramp-encoding-shell "bash"))
+
 (provide 'fn-remote)
