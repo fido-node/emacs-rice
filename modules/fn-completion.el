@@ -196,14 +196,14 @@
   )
 
 (use-package kind-icon
-  :ensure t
   :after corfu
-                                        ;:custom
+  :custom
+  (kind-icon-use-icons t)
                                         ; (kind-icon-blend-background t)
                                         ; (kind-icon-default-face 'corfu-default) ; only needed with blend-background
   :config
-  (setq kind-icon-use-icons nil)
-  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)
+  )
 
 
 ;; Add extensions
