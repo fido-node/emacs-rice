@@ -209,5 +209,8 @@ Cancel the previous one if present."
          ([remap describe-command] . helpful-command)
          ([remap describe-key] . helpful-key)))
 
+(use-package rg
+  :init
+  (rg-enable-default-bindings))
 
 (provide 'fn-core)

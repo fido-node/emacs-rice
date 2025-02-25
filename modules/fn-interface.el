@@ -190,4 +190,9 @@
   :init
   (savehist-mode))
 
+(use-package ediff
+  :demand t
+  :ensure nil
+  )
+
 (provide 'fn-interface)

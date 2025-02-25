@@ -111,7 +111,37 @@
   (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
   (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
   :init
-  (vertico-mode))
+  (vertico-mode)
+  (vertico-multiform-mode t)
+  (vertico-mouse-mode t)
+  )
+
+
+(use-package mini-frame
+  :if (display-graphic-p)
+  :unless (eq system-type 'android)
+  :custom
+  (mini-frame-completions-show-parameters
+   '((height . 0.25) (width . 0.5) (menu-bar-lines . 0)
+     (tool-bar-lines . 0) (left . 0.5)))
+  (mini-frame-show-parameters
+   '((width . 0.6) (menu-bar-lines . 0) (tool-bar-lines . 0) (left . 0.5)
+     (vertical-scroll-bars) (height . 15)
+     (child-frame-border-width . 0)))
+  :init
+  ;; WARNING: PGTK BUILD IS BUGGED
+  ;; IT FOCUS KEYBOARD MOVEMENTS TO TOOL BAR FRAME
+  ;; THIS MUST FIXS THIS BUG
+  (if (eq system-type 'windows-nt)
+      (dolist (params '((alpha . 85)
+                        (minibuffer-exit . t)))
+        (add-to-list 'mini-frame-show-parameters params)
+        (add-to-list 'mini-frame-completions-show-parameters params))
+
+    (setopt mini-frame-detach-on-hide nil)
+    ;; (add-to-list 'mini-frame-show-parameters '(alpha-background . 85))
+    (fset #'select-frame-set-input-focus #'select-frame))
+  (mini-frame-mode t))
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless

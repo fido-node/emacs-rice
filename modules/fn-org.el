@@ -40,4 +40,13 @@
     (add-to-list 'org-structure-template-alist item)))
 
 
+(use-package org-appear
+  :after org
+  :hook (org-mode . org-appear-mode))
+
+(use-package org-modern
+  :after org
+  :config (global-org-modern-mode))
+
+
 (provide 'fn-org)

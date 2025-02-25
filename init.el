@@ -4,10 +4,13 @@
 
 (setq load-prefer-newer t)
 
+
 ;; Core settings
 (setq ;; Flash the UI instead of beeping
+ user-full-name "Aleksandr Mikhailov"
+ user-mail-address "iam@fidonode.me"
  visible-bell nil
-
+ show-trailing-whitespace t
  ;; Yes, this is Emacs
  inhibit-startup-message t
  ;; inhibit-startup-screen t
