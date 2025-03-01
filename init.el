@@ -218,7 +218,7 @@
   )
 
 (use-package modus-themes
-
+  :after moe-theme
   :custom
   (modus-themes-italic-constructs t)
   (modus-themes-bold-constructs t)
