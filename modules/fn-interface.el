@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(set-face-attribute 'default nil :font "Iosevka Comfy Motion" :height 130 :weight 'regular)
+(set-face-attribute 'default nil :font "Victor Mono" :height 130 :weight 'regular)
 
 (use-package buffer-terminator
   :ensure t
@@ -14,6 +14,18 @@
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(use-package highlight-indent-guides
+  :config
+  (setq
+   highlight-indent-guides-method 'character)
+  (add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
+  )
+
+(use-package idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+
+  :hook ((prog-mode text-mode) . idle-highlight-mode))
 
 (use-package dashboard
   :ensure t

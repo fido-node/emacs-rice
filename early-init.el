@@ -3,7 +3,7 @@
 ;; Some snake oil during the startup.  Probably won't hurt and is
 ;; reverted right after the Emacs initialization finishes.
 (setq inhibit-startup-message t)
-(global-display-line-numbers-mode 1)
+;; (global-display-line-numbers-mode 1)
 
 (add-hook 'after-init-hook
           `(lambda ()

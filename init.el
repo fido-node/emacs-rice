@@ -366,5 +366,5 @@
 (when (display-graphic-p)
 
   (dashboard-open)
-  (treemacs-start-on-boot)
+  ;; (treemacs-start-on-boot)
   )

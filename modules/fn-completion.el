@@ -117,31 +117,31 @@
   )
 
 
-(use-package mini-frame
-  :if (display-graphic-p)
-  :unless (eq system-type 'android)
-  :custom
-  (mini-frame-completions-show-parameters
-   '((height . 0.25) (width . 0.5) (menu-bar-lines . 0)
-     (tool-bar-lines . 0) (left . 0.5)))
-  (mini-frame-show-parameters
-   '((width . 0.6) (menu-bar-lines . 0) (tool-bar-lines . 0) (left . 0.5)
-     (vertical-scroll-bars) (height . 15)
-     (child-frame-border-width . 0)))
-  :init
-  ;; WARNING: PGTK BUILD IS BUGGED
-  ;; IT FOCUS KEYBOARD MOVEMENTS TO TOOL BAR FRAME
-  ;; THIS MUST FIXS THIS BUG
-  (if (eq system-type 'windows-nt)
-      (dolist (params '((alpha . 85)
-                        (minibuffer-exit . t)))
-        (add-to-list 'mini-frame-show-parameters params)
-        (add-to-list 'mini-frame-completions-show-parameters params))
+;; (use-package mini-frame
+;;   :if (display-graphic-p)
+;;   :unless (eq system-type 'android)
+;;   :custom
+;;   (mini-frame-completions-show-parameters
+;;    '((height . 0.25) (width . 0.5) (menu-bar-lines . 0)
+;;      (tool-bar-lines . 0) (left . 0.5)))
+;;   (mini-frame-show-parameters
+;;    '((width . 0.6) (menu-bar-lines . 0) (tool-bar-lines . 0) (left . 0.5)
+;;      (vertical-scroll-bars) (height . 15)
+;;      (child-frame-border-width . 0)))
+;;   :init
+;;   ;; WARNING: PGTK BUILD IS BUGGED
+;;   ;; IT FOCUS KEYBOARD MOVEMENTS TO TOOL BAR FRAME
+;;   ;; THIS MUST FIXS THIS BUG
+;;   (if (eq system-type 'windows-nt)
+;;       (dolist (params '((alpha . 85)
+;;                         (minibuffer-exit . t)))
+;;         (add-to-list 'mini-frame-show-parameters params)
+;;         (add-to-list 'mini-frame-completions-show-parameters params))
 
-    (setopt mini-frame-detach-on-hide nil)
-    ;; (add-to-list 'mini-frame-show-parameters '(alpha-background . 85))
-    (fset #'select-frame-set-input-focus #'select-frame))
-  (mini-frame-mode t))
+;;     (setopt mini-frame-detach-on-hide nil)
+;;     ;; (add-to-list 'mini-frame-show-parameters '(alpha-background . 85))
+;;     (fset #'select-frame-set-input-focus #'select-frame))
+;;   (mini-frame-mode t))
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
@@ -182,6 +182,10 @@
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
                  (window-parameters (mode-line-format . none)))))
+
+
+(use-package wgrep
+  :ensure t)
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
@@ -265,6 +269,7 @@
   ;; `completion-at-point' is often bound to M-TAB.
   (tab-always-indent 'complete)
   ;; Support opening new minibuffers from inside existing minibuffers.
+  (text-mode-ispell-word-completion nil)
   (enable-recursive-minibuffers t)
   ;; Hide commands in M-x which do not work in the current mode.  Vertico
   ;; commands are hidden in normal buffers. This setting is useful beyond

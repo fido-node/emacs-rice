@@ -188,4 +188,9 @@
   (yas-reload-all))
 
 
+(use-package ws-butler
+  :config
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  )
+
 (provide 'fn-coding)

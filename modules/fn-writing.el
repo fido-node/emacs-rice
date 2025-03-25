@@ -73,4 +73,7 @@
   :config
   (reverse-im-mode t))
 
+
+(use-package org-re-reveal)
+
 (provide 'fn-writing)
