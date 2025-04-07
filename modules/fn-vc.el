@@ -58,4 +58,6 @@
 
 (use-package helm-ls-git)
 
+(use-package forge)
+
 (provide 'fn-vc)

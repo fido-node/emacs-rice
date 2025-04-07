@@ -141,7 +141,17 @@
 (use-package helm-lsp)
 
 (use-package scala-mode
-  :interpreter ("scala" . scala-mode))
+  ;; :interpreter ("scala" . scala-mode)
+  :mode "\\.\\(scala\\|sbt\\)\\'"
+  :hook
+  (scala-mode-hook . init-scala-prettify-symbols)
+  :init
+  (setq scala-indent:align-parameters t)
+  :config
+  (defun init-scala-prettify-symbols ()
+    (setq prettify-symbols-alist scala-prettify-symbols-alist)
+    (prettify-symbols-mode 1))
+  )
 
 ;; Enable sbt mode for executing sbt commands
 (use-package sbt-mode
