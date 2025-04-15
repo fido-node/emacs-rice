@@ -28,4 +28,6 @@
         mastodon-active-user "fido_node")
   )
 
+(use-package elfeed)
+
 (provide 'fn-social)

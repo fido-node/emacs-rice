@@ -8,9 +8,9 @@
 
 ;; (use-package envrc)
 
-(use-package direnv
-  :init
-  (direnv-mode))
+;; (use-package direnv
+;; :init
+;; (direnv-mode))
 
 (defvar user-cache-directory (concat user-emacs-directory "var/"))
 
