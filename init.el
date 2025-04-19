@@ -168,7 +168,8 @@
                                    fn-bindings
                                    fn-social
                                    fn-copilot
-                                   fn-remote)
+                                   fn-remote
+                                   fn-evil)
   "Configuration modules most commonly used across my machines.")
 
 
